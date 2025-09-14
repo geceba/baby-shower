@@ -1,11 +1,83 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import "../styles/global.css";
+import baby from "../assets/baby.png";
+import Countdown from "../components/countdown.astro";
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Baby Shower Verónica 🎀</title>
+	</head>
+	<body>
+		<header>
+			<div class="container-background">
+				<div class="wrapper-header">
+					<div class="background w-full">
+						<h1 class="title">¡Baby Shower de Verónica!</h1>
+						<h2 class="sub-title mb-6">
+							Te invitamos a pasar una agradable tarde en nuestro
+							baby shower.
+						</h2>
+						<p class="sub-title">18 de octubre de 2025, 3:00 PM</p>
+						<p class="sub-title text-lg md:text-xl mb-6">
+							<a 
+							  href="https://maps.app.goo.gl/KNoHtRpfLSufYWda8" 
+							  target="_blank" 
+							  rel="noopener noreferrer"
+							  class="text-blue-600 hover:underline"
+							>
+							  Ver dirección
+							</a>
+						  </p>
+					</div>
+
+					<div class="wrapper-stork">
+						<img src={baby.src} alt="Fondo bonito :)" />
+					</div>
+				</div>
+			</div>
+		</header>
+
+		<section class="info-container">
+			<div class="info-wrapper">
+				<h1 class="title-info font-bold">
+					Demos la bienvenida a Verónica
+				</h1>
+				<p class="title-description font-light">
+					Acompáñanos a pasar una tarde divertida con juegos,
+					bocadillos y muchas sorpresas. ¡Tu presencia hará que este
+					día sea aún más especial!
+				</p>
+
+				<div class="link-wrapper">
+					<a class="link-confirm font-normal" href="">RSVP</a>
+				</div>
+
+				<div class="countdown-container mb-3">
+					<Countdown />
+				</div>
+
+				<div class="mt-6 text-center">
+					<p class="title-description font-light mb-2">
+						Si quieres hacernos un regalo, hemos creado una lista en
+						Amazon con ideas que nos encantaría recibir:
+					</p>
+					<a
+						href="https://www.amazon.com.mx/baby-reg/frida-aguilarmonforte-diciembre-2025-tizimin/2QZHR811QNAU8"
+						target="_blank"
+						rel="noopener noreferrer"
+						class="inline-block bg-yellow-400 text-white font-semibold px-4 py-2 rounded-md hover:bg-yellow-500 transition-colors text-sm"
+					>
+						Ver lista de regalos
+					</a>
+				</div>
+			</div>
+		</section>
+
+		<footer>
+			<p>Gerardo & Frida</p>
+		</footer>
+	</body>
+</html>

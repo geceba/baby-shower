@@ -1,0 +1,103 @@
+/* src/styles/global.css */
+
+h1, h2, h3, p, span, a, button {
+    font-family: "Poppins", sans-serif;
+}
+
+.wrapper-header {
+    display: flex;
+    padding: 40px;
+}
+
+.container-background {
+ background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), url("/background.jpg") center center / cover no-repeat;
+}
+
+.title {
+    font-weight: 700;
+    font-size: 55.2px;
+    margin-bottom: 0.3rem   ;
+}
+
+.sub-title {
+    font-size: 18.4px;
+    font-weight: 300;
+    line-height: 1.4;
+}
+
+.link-wrapper {
+    display: flex;
+    align-items: center;
+    margin-top: 1rem;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.link-confirm {
+    border-radius: 50px;
+    background-image: linear-gradient(-180deg, rgb(255, 187, 230) 0%, rgb(135, 163, 255) 96%);
+    box-shadow: rgba(135, 163, 255, 0.5) 0px 4px 10px 0px;
+    padding: 20px 40px;
+    text-align: center;
+    white-space: nowrap;
+    color: white;
+    font-size: 14px;
+}
+
+.info-container {
+    background-color: rgb(54, 53, 82);
+    padding: 80px 0;
+}
+
+.title-info {
+    color: white;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 43px;
+}
+
+.title-description {
+    text-align: center;
+    color: white;
+    font-size: 18px;
+    line-height: 1.4;
+    padding-bottom: 45px;
+}
+
+.countdown-container {
+    display: flex;
+    justify-content: center;
+}
+
+.font-size-counter {
+    font-size: 48px;
+}
+
+.info-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 40px;
+}
+
+
+/* Mobile: hasta 768px */
+@media (max-width: 768px) {
+    .wrapper-header {
+      flex-direction: column; 
+      padding: 20px;
+    }
+  
+    .container-background {
+      background-size: cover;
+      background-position: center top;
+    }
+
+    .font-size-counter {
+        font-size: 28px;
+    }
+
+    .info-wrapper {
+        padding: 0 20px;
+    }
+  }

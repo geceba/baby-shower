@@ -1,0 +1,50 @@
+
+<div id="countdown" class="flex gap-4 text-center font-bold text-white"></div>
+
+<script>
+  const target = new Date("2025-10-18T15:00:00").getTime();
+
+  function updateCountdown() {
+    const now = Date.now();
+    const diff = target - now;
+
+    const el = document.getElementById("countdown");
+    if(!el) return;
+
+    if (diff <= 0) {
+      el.innerHTML = "¡Llegó el gran día!";
+      clearInterval(timer);
+      return;
+    }
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+    el.innerHTML = `
+      <div>
+        <p class="font-size-counter">${String(days).padStart(2, "0")}</p>
+        <span class="text-xl">days</span>
+      </div>
+      
+      <div>
+        <p class="font-size-counter">${String(hours).padStart(2, "0")}</p>
+        <span class="text-xl">hours</span>
+      </div>
+      
+      <div>
+        <p class="font-size-counter">${String(minutes).padStart(2, "0")}</p>
+        <span class="text-xl">minutes</span>
+      </div>
+      
+      <div>
+        <p class="font-size-counter">${String(seconds).padStart(2, "0")}</p>
+        <span class="text-xl">seconds</span>
+      </div>
+    `;
+  }
+
+  updateCountdown();
+  const timer = setInterval(updateCountdown, 1000);
+</script>
