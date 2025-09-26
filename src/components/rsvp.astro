@@ -1,0 +1,43 @@
+<button id="rsvpBtn" class="link-confirm font-normal" type="button">
+  RSVP
+</button>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" client:load></script>
+<script type="module">
+
+  import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
+
+  const supabaseUrl = "https://pzjiweedsxeffztgvlal.supabase.co";
+  const supabaseAnonKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB6aml3ZWVkc3hlZmZ6dGd2bGFsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTc4MjY0NjgsImV4cCI6MjA3MzQwMjQ2OH0.fMar-YyCpPEXPXTepWl3wHuMpWpjWcG3db-soHA4FdE";
+  const supabase = createClient(supabaseUrl, supabaseAnonKey);
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const token = new URLSearchParams(window.location.search).get("token") ?? "";
+    const btn = document.getElementById("rsvpBtn");
+
+    btn.addEventListener("click", async () => {
+      if (!token) return Swal.fire("Error", "No se proporcionó token.", "error");
+
+      const { data, error } = await supabase
+        .from("guests")
+        .update({ confirmed: true, confirmed_at: new Date().toISOString() })
+        .eq("token", token)
+        .select()
+        .single();
+
+      if (error || !data) {
+        Swal.fire("Error", "Token no válido o ya confirmado.", "error");
+      } else {
+        Swal.fire({
+          title: "¡Gracias!",
+          text: `Tu asistencia de ${data.guests_count} persona(s) ha sido confirmada, ${data.name}.`,
+          icon: "success",
+          confirmButtonText: "¡Perfecto!",
+        });
+        btn.disabled = true;
+        btn.style.opacity = 0.5;
+        btn.style.pointerEvents = "none";
+      }
+    });
+  });
+</script>
